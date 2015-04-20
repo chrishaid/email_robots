@@ -1,0 +1,16 @@
+<h1>Weekly Attendance Report</h1>
+
+<h2>What is this</h2>
+
+<p>This is an intial test building a Mandrell email template of attendence data and email it out the Data team. </p>
+
+<p>For more info go to <a href="idea.kippchicago.org">KIPP IDEA</a>.</p>
+
+<p>Let me know what you think.</p>
+
+<p><img src="cid:ada_targets_plot_new-1" /> </p>
+
+<h3>Summary Table</h3>
+
+<div mc:edit="target_table_html">target_table_html</div>
+

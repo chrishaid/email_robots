@@ -1,0 +1,32 @@
+<p><em>Attendance data as of Friday, April 17, 2015 at 02:00 PM</em></p>
+
+<h1>Weekly Attendance Report</h1>
+
+<div mc:edit="time_stamp">time_stamp</div>
+
+<p>For more info go to <a href="idea.kippchicago.org">KIPP IDEA</a>.</p>
+
+<h3>Region</h3>
+
+<p><img src="cid:ada_targets_plot_all-1" /> </p>
+
+<h3>KAP</h3>
+
+<p><img src="cid:ada_targets_plot_KAP-1" /> </p>
+
+<h3>KAMS</h3>
+
+<p><img src="cid:ada_targets_plot_KAMS-1" /> </p>
+
+<h3>KCCP</h3>
+
+<p><img src="cid:ada_targets_plot_KCCP-1" /> </p>
+
+<h3>KBCP</h3>
+
+<p><img src="cid:ada_targets_plot_KBCP-1" /> </p>
+
+<h3>Summary Table</h3>
+
+<div mc:edit="target_table_html">target_table_html</div>
+

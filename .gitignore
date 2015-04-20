@@ -11,3 +11,14 @@
 # produced vignettes
 vignettes/*.html
 vignettes/*.pdf
+
+# Reports 
+reports/*
+
+# config files
+config/*
+*.dcf
+
+# data
+data/*
+

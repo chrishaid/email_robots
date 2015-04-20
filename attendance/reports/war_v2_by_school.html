@@ -1,0 +1,296 @@
+<p><em>Attendance data as of Monday, April 20, 2015 at 12:00 PM</em></p>
+
+<h1>Weekly Attendance Report</h1>
+
+<div mc:edit="time_stamp">time_stamp</div>
+
+<p>For more info go to <a href="idea.kippchicago.org">KIPP IDEA</a>.</p>
+
+<h3>Region</h3>
+
+<p><img src="figure/ada_targets_plot_all-1.png" alt="plot of chunk ada_targets_plot_all"/> </p>
+
+<h3>KAP</h3>
+
+<p><img src="figure/ada_targets_plot_KAP-1.png" alt="plot of chunk ada_targets_plot_KAP"/> </p>
+
+<h3>KAMS</h3>
+
+<p><img src="figure/ada_targets_plot_KAMS-1.png" alt="plot of chunk ada_targets_plot_KAMS"/> </p>
+
+<h3>KCCP</h3>
+
+<p><img src="figure/ada_targets_plot_KCCP-1.png" alt="plot of chunk ada_targets_plot_KCCP"/> </p>
+
+<h3>KBCP</h3>
+
+<p><img src="figure/ada_targets_plot_KBCP-1.png" alt="plot of chunk ada_targets_plot_KBCP"/> </p>
+
+<h3>Summary Table</h3>
+
+<div mc:edit="target_table_html">target_table_html</div>
+
+<pre><code class="r">time_stamp2&lt;-paste0(&quot;&lt;i&gt;&quot;,time_stamp, &quot;&lt;/i&gt;&quot;)
+
+subject &lt;- lubridate::stamp(&quot;Daily Attendance Report for Tuesday, September 14, 2001&quot;)(today())
+
+figs&lt;-list.files(&#39;figure/&#39;)
+figs&lt;-paste0(&#39;figure/&#39;, figs)
+
+email_data&lt;-read.dcf(&quot;../config//email.dcf&quot;, all = TRUE) %&gt;% as.data.frame
+
+rcpts_region&lt;-strsplit(email_data$region, &#39;\\s*,\\s*&#39;)[[1]]
+rcpts_kap&lt;-strsplit(email_data$kap, &#39;\\s*,\\s*&#39;)[[1]]
+rcpts_kams&lt;-strsplit(email_data$kams, &#39;\\s*,\\s*&#39;)[[1]]
+rcpts_kccp&lt;-strsplit(email_data$kccp, &#39;\\s*,\\s*&#39;)[[1]]
+rcpts_kbcp&lt;-strsplit(email_data$kbcp, &#39;\\s*,\\s*&#39;)[[1]]
+
+
+
+message(&quot;Mandrill mailing regiona team now&quot;)
+mandrill_send_template(api_key = keys$mandrill_key,
+                       recipient = rcpts_region,
+                       subject = subject,
+                       template_name = &quot;war-regional-team&quot;,
+                       sender=&quot;data@kippchicago.org&quot;,
+                       content=list(time_stamp=time_stamp2,
+                                    target_table=target_table_html),
+                       images=figs[grepl(&quot;all&quot;, figs)],
+                       css=TRUE
+)
+</code></pre>
+
+<pre><code>## [[1]]
+## [[1]]$email
+## [1] &quot;chaid@kippchicago.org&quot;
+## 
+## [[1]]$status
+## [1] &quot;sent&quot;
+## 
+## [[1]]$`_id`
+## [1] &quot;02863a7c7ee54d308cac819ed9ef76ff&quot;
+## 
+## [[1]]$reject_reason
+## NULL
+## 
+## 
+## [[2]]
+## [[2]]$email
+## [1] &quot;agoble@kippchicago.org&quot;
+## 
+## [[2]]$status
+## [1] &quot;sent&quot;
+## 
+## [[2]]$`_id`
+## [1] &quot;8bc629b399624ad790230fdeb36485f1&quot;
+## 
+## [[2]]$reject_reason
+## NULL
+## 
+## 
+## [[3]]
+## [[3]]$email
+## [1] &quot;msalmonowicz@kippchicago.org&quot;
+## 
+## [[3]]$status
+## [1] &quot;sent&quot;
+## 
+## [[3]]$`_id`
+## [1] &quot;65077e97be6f4b108b23dccc7c958ca0&quot;
+## 
+## [[3]]$reject_reason
+## NULL
+## 
+## 
+## [[4]]
+## [[4]]$email
+## [1] &quot;apouba@kippchicago.org&quot;
+## 
+## [[4]]$status
+## [1] &quot;sent&quot;
+## 
+## [[4]]$`_id`
+## [1] &quot;38b33e75789647a58a8ece8e10e72b1a&quot;
+## 
+## [[4]]$reject_reason
+## NULL
+## 
+## 
+## [[5]]
+## [[5]]$email
+## [1] &quot;nboardman@kippchicago.org&quot;
+## 
+## [[5]]$status
+## [1] &quot;sent&quot;
+## 
+## [[5]]$`_id`
+## [1] &quot;30372dea18e74d25b7401a0f3e7ca009&quot;
+## 
+## [[5]]$reject_reason
+## NULL
+</code></pre>
+
+<pre><code class="r">message(&quot;Mandrill mailing KAP team now&quot;)
+mandrill_send_template(api_key = keys$mandrill_key,
+                       recipient = rcpts_kap,
+                       subject = subject,
+                       template_name = &quot;war-kap&quot;,
+                       sender=&quot;data@kippchicago.org&quot;,
+                       content=list(time_stamp=time_stamp2,
+                                    target_table=target_table_html),
+                       images=figs[grepl(&quot;KAP&quot;, figs)],
+                       css=TRUE
+)
+</code></pre>
+
+<pre><code>## [[1]]
+## [[1]]$email
+## [1] &quot;ebhattacharyya@kippchicago.org&quot;
+## 
+## [[1]]$status
+## [1] &quot;sent&quot;
+## 
+## [[1]]$`_id`
+## [1] &quot;b25ab30ee023498fbd26e8143937a1db&quot;
+## 
+## [[1]]$reject_reason
+## NULL
+## 
+## 
+## [[2]]
+## [[2]]$email
+## [1] &quot;chaid@kippchicago.org&quot;
+## 
+## [[2]]$status
+## [1] &quot;sent&quot;
+## 
+## [[2]]$`_id`
+## [1] &quot;97e2082225924630922495bb7bb538ae&quot;
+## 
+## [[2]]$reject_reason
+## NULL
+</code></pre>
+
+<pre><code class="r">message(&quot;Mandrill mailing KAMS team now&quot;)
+mandrill_send_template(api_key = keys$mandrill_key,
+                       recipient = rcpts_kams,
+                       subject = subject,
+                       template_name = &quot;war-kams&quot;,
+                       sender=&quot;data@kippchicago.org&quot;,
+                       content=list(time_stamp=time_stamp2,
+                                    target_table=target_table_html),
+                       images=figs[grepl(&quot;KAMS&quot;, figs)],
+                       css=TRUE
+)
+</code></pre>
+
+<pre><code>## [[1]]
+## [[1]]$email
+## [1] &quot;lhenley@kippchicago.org&quot;
+## 
+## [[1]]$status
+## [1] &quot;sent&quot;
+## 
+## [[1]]$`_id`
+## [1] &quot;2ddf9ff3b0fa456c8e828c0cae546c96&quot;
+## 
+## [[1]]$reject_reason
+## NULL
+## 
+## 
+## [[2]]
+## [[2]]$email
+## [1] &quot;chaid@kippchicago.org&quot;
+## 
+## [[2]]$status
+## [1] &quot;sent&quot;
+## 
+## [[2]]$`_id`
+## [1] &quot;05bcca15ab1f465e90fa3308652d1309&quot;
+## 
+## [[2]]$reject_reason
+## NULL
+</code></pre>
+
+<pre><code class="r">message(&quot;Mandrill mailing KCCP team now&quot;)
+mandrill_send_template(api_key = keys$mandrill_key,
+                       recipient = rcpts_kccp,
+                       subject = subject,
+                       template_name = &quot;war-kccp&quot;,
+                       sender=&quot;data@kippchicago.org&quot;,
+                       content=list(time_stamp=time_stamp2,
+                                    target_table=target_table_html),
+                       images=figs[grepl(&quot;KCCP&quot;, figs)],
+                       css=TRUE
+)
+</code></pre>
+
+<pre><code>## [[1]]
+## [[1]]$email
+## [1] &quot;kmazurek@kippchicago.org&quot;
+## 
+## [[1]]$status
+## [1] &quot;sent&quot;
+## 
+## [[1]]$`_id`
+## [1] &quot;1479ad248b5b4864856a122414cc95f8&quot;
+## 
+## [[1]]$reject_reason
+## NULL
+## 
+## 
+## [[2]]
+## [[2]]$email
+## [1] &quot;chaid@kippchicago.org&quot;
+## 
+## [[2]]$status
+## [1] &quot;sent&quot;
+## 
+## [[2]]$`_id`
+## [1] &quot;5c8dbec2bd9c4a5cb090b82d84c78ca4&quot;
+## 
+## [[2]]$reject_reason
+## NULL
+</code></pre>
+
+<pre><code class="r">message(&quot;Mandrill mailing KBCP team now&quot;)
+mandrill_send_template(api_key = keys$mandrill_key,
+                       recipient = rcpts_kbcp,
+                       subject = subject,
+                       template_name = &quot;war-kbcp&quot;,
+                       sender=&quot;data@kippchicago.org&quot;,
+                       content=list(time_stamp=time_stamp2,
+                                    target_table=target_table_html),
+                       images=figs[grepl(&quot;KBCP&quot;, figs)],
+                       css=TRUE
+)
+</code></pre>
+
+<pre><code>## [[1]]
+## [[1]]$email
+## [1] &quot;esale@kippchicago.org&quot;
+## 
+## [[1]]$status
+## [1] &quot;sent&quot;
+## 
+## [[1]]$`_id`
+## [1] &quot;7b0110dd60314ef0a278489087376219&quot;
+## 
+## [[1]]$reject_reason
+## NULL
+## 
+## 
+## [[2]]
+## [[2]]$email
+## [1] &quot;chaid@kippchicago.org&quot;
+## 
+## [[2]]$status
+## [1] &quot;sent&quot;
+## 
+## [[2]]$`_id`
+## [1] &quot;a430ce945cdd4ceebab4bf3986fea7fe&quot;
+## 
+## [[2]]$reject_reason
+## NULL
+</code></pre>
+
