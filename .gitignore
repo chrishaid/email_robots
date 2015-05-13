@@ -23,5 +23,6 @@ config/*
 data/*
 
 # figures
-figure/*
+reports/figure/*
 figures/*
+*.png
