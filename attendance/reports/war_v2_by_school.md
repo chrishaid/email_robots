@@ -1,7 +1,7 @@
 ---
 title: "Daily Attendance Report"
 author: "Chris Haid"
-date: "2015-04-20"
+date: "2015-05-13"
 output: html_document
 ---
 
@@ -11,7 +11,7 @@ output: html_document
 
 
 
-*Attendance data as of Monday, April 20, 2015 at 12:00 PM*
+*Attendance data as of Wednesday, May 13, 2015 at 12:00 PM*
 
 # Weekly Attendance Report
 <div mc:edit="time_stamp">time_stamp</div>
@@ -86,7 +86,7 @@ mandrill_send_template(api_key = keys$mandrill_key,
 ## [1] "sent"
 ## 
 ## [[1]]$`_id`
-## [1] "02863a7c7ee54d308cac819ed9ef76ff"
+## [1] "83a748c92a7a46b88f2c6ace282ecc55"
 ## 
 ## [[1]]$reject_reason
 ## NULL
@@ -100,7 +100,7 @@ mandrill_send_template(api_key = keys$mandrill_key,
 ## [1] "sent"
 ## 
 ## [[2]]$`_id`
-## [1] "8bc629b399624ad790230fdeb36485f1"
+## [1] "adb56052931f454bb3a2a6ab5b93787f"
 ## 
 ## [[2]]$reject_reason
 ## NULL
@@ -114,7 +114,7 @@ mandrill_send_template(api_key = keys$mandrill_key,
 ## [1] "sent"
 ## 
 ## [[3]]$`_id`
-## [1] "65077e97be6f4b108b23dccc7c958ca0"
+## [1] "d6911de144a64ab8b396e89e2329c08e"
 ## 
 ## [[3]]$reject_reason
 ## NULL
@@ -128,7 +128,7 @@ mandrill_send_template(api_key = keys$mandrill_key,
 ## [1] "sent"
 ## 
 ## [[4]]$`_id`
-## [1] "38b33e75789647a58a8ece8e10e72b1a"
+## [1] "bb6eb5e114ee44648315a35209aec1f4"
 ## 
 ## [[4]]$reject_reason
 ## NULL
@@ -142,7 +142,7 @@ mandrill_send_template(api_key = keys$mandrill_key,
 ## [1] "sent"
 ## 
 ## [[5]]$`_id`
-## [1] "30372dea18e74d25b7401a0f3e7ca009"
+## [1] "613bb6df4c02415da768af35e0a2e598"
 ## 
 ## [[5]]$reject_reason
 ## NULL
@@ -171,7 +171,7 @@ mandrill_send_template(api_key = keys$mandrill_key,
 ## [1] "sent"
 ## 
 ## [[1]]$`_id`
-## [1] "b25ab30ee023498fbd26e8143937a1db"
+## [1] "025fdc6689e148aeb27902f8f7dbc70a"
 ## 
 ## [[1]]$reject_reason
 ## NULL
@@ -185,7 +185,7 @@ mandrill_send_template(api_key = keys$mandrill_key,
 ## [1] "sent"
 ## 
 ## [[2]]$`_id`
-## [1] "97e2082225924630922495bb7bb538ae"
+## [1] "4b02f1c136b14d6da73f8749877203be"
 ## 
 ## [[2]]$reject_reason
 ## NULL
@@ -214,7 +214,7 @@ mandrill_send_template(api_key = keys$mandrill_key,
 ## [1] "sent"
 ## 
 ## [[1]]$`_id`
-## [1] "2ddf9ff3b0fa456c8e828c0cae546c96"
+## [1] "9f1e0f9e48734b58bc0e9a076717358e"
 ## 
 ## [[1]]$reject_reason
 ## NULL
@@ -228,7 +228,7 @@ mandrill_send_template(api_key = keys$mandrill_key,
 ## [1] "sent"
 ## 
 ## [[2]]$`_id`
-## [1] "05bcca15ab1f465e90fa3308652d1309"
+## [1] "6c6230d1dde841eeb0fdbfa64182db51"
 ## 
 ## [[2]]$reject_reason
 ## NULL
@@ -257,7 +257,7 @@ mandrill_send_template(api_key = keys$mandrill_key,
 ## [1] "sent"
 ## 
 ## [[1]]$`_id`
-## [1] "1479ad248b5b4864856a122414cc95f8"
+## [1] "e320b3b4c387456888384273bbee236b"
 ## 
 ## [[1]]$reject_reason
 ## NULL
@@ -271,7 +271,7 @@ mandrill_send_template(api_key = keys$mandrill_key,
 ## [1] "sent"
 ## 
 ## [[2]]$`_id`
-## [1] "5c8dbec2bd9c4a5cb090b82d84c78ca4"
+## [1] "4617b928d3ab4efabcbd208fefd24dc8"
 ## 
 ## [[2]]$reject_reason
 ## NULL
@@ -300,7 +300,7 @@ mandrill_send_template(api_key = keys$mandrill_key,
 ## [1] "sent"
 ## 
 ## [[1]]$`_id`
-## [1] "7b0110dd60314ef0a278489087376219"
+## [1] "86f5282d6eff4acdafbf2ab1bfb2b736"
 ## 
 ## [[1]]$reject_reason
 ## NULL
@@ -314,7 +314,7 @@ mandrill_send_template(api_key = keys$mandrill_key,
 ## [1] "sent"
 ## 
 ## [[2]]$`_id`
-## [1] "a430ce945cdd4ceebab4bf3986fea7fe"
+## [1] "362ebc1259b241b8b4b1b1ec2a0d8474"
 ## 
 ## [[2]]$reject_reason
 ## NULL

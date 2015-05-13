@@ -22,3 +22,6 @@ config/*
 # data
 data/*
 
+# figures
+figure/*
+figures/*

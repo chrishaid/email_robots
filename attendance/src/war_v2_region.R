@@ -39,7 +39,7 @@ time_stamp
 
 ## ----load_and_munge_data-------------------------------------------------
 attendance <- read_csv(file="../data/Attendance.csv",
-                       col_types="iiciciiccccii")
+                       col_types="iiciciiccccid")
 
 names(attendance)<-tolower(names(attendance))
 
