@@ -61,32 +61,37 @@ attendance <- read_csv(file="../data/Attendance.csv",
 names(attendance)<-tolower(names(attendance))
 
 schoolintials <- c("KAP", "KAMS", "KCCP", "KBCP")
+schoolintials2 <- c("KAP", "KAMS", "KCCP", "KBCP", "KAS")
 
 schools = data.frame(schoolid=c(78102, 7810, 400146, 400163),
                      schoolname=factor(schoolintials, levels=schoolintials),
-                     ada_target=c(.95,.95,.95,.94)
+                     ada_target=c(.97,.97,.97,.97)
                      )
 
 att <- attendance %>% left_join(schools, by="schoolid") %>%
   mutate(present=1-absent,
          date=ymd_hms(calendardate),
-         month=month(date,label = TRUE, abbr = TRUE),
+         month=lubridate::month(date,label = TRUE, abbr = TRUE),
          week_of=floor_date(date, unit="week"),
          week = (week_of - min(week_of))/dweeks(1) +1,
-         day_of_week = wday(date,label = TRUE, abbr=TRUE)
-         ) %>%
-  filter(date!=mdy('01/09/2015')) # day removed by CPS due to cold tempuratures
+         day_of_week = lubridate::wday(date,label = TRUE, abbr=TRUE),
+         schoolname = ifelse(as.character(schoolname)=="KBCP" & grade_level==5, 
+                             "KAS", 
+                             as.character(schoolname)
+                             ),
+         schoolname = factor(schoolname, levels=schoolintials2)
+         )
           
 
 att_by_day <- att %>%
-  group_by(date, week, day_of_week, schoolname, ada_target) %>%
+  group_by(date, week,week_of, day_of_week, schoolname, ada_target) %>%
   summarize(
             sum_enrolled=sum(enrolled),
             sum_present = sum(present),
             sum_absent=sum_enrolled-sum_present,
             ada = sum_present/sum_enrolled) %>%
   group_by(schoolname) %>%
-  mutate(deviation=ada-.96,
+  mutate(deviation=ada-.97,
          cum_enrolled=order_by(date, cumsum(sum_enrolled)),
          cum_present=order_by(date, cumsum(sum_present)),
          ytd_ada = cum_present/cum_enrolled,
@@ -95,7 +100,7 @@ att_by_day <- att %>%
 
 ada_targets<-with(att_by_day, 
      max_daily_absent(current_day = day_in_sy, 
-                      total_days = 188,
+                      total_days = 187,
                       enrollment = sum_enrolled,
                       current_ada = ytd_ada, 
                       target_ada=ada_target
@@ -106,7 +111,7 @@ att_by_day_w_targets<-cbind(att_by_day, ada_targets)
 
 max_date <- max(att_by_day_w_targets$date)
 
-remaining_sy<-data.frame(date=seq(today()+days(1),as.Date("2015-06-18"), by="day")) %>%
+remaining_sy<-data.frame(date=seq(today()+days(1),as.Date("2016-06-17"), by="day")) %>%
   mutate(day=wday(date)) %>%
   filter(day %in% c(2:6))
 
@@ -117,11 +122,16 @@ last_att_day_data<-filter(att_by_day_w_targets, date==max(date))
 
 year_projected<-left_join(year_extended, last_att_day_data, by="schoolname") %>%
   select(-date.y, -ada_target.x) %>%
-  rename(ada_target = ada_target.y,
+  dplyr::rename(ada_target = ada_target.y,
          date=date.x) %>%
   mutate(date=ymd(date),
-         week=week + week(floor_date(date, unit='week'))-min(week(date))+1,
-         day_of_week = wday(date, label = TRUE, abbr = TRUE),
+         
+         week_of=floor_date(date, unit="week"),
+         week = (week_of - min(att_by_day_w_targets$week_of))/dweeks(1) +1,
+         day_of_week = lubridate::wday(date,label = TRUE, abbr=TRUE),
+         
+         #week=week + lubridate::week(floor_date(date, unit='week'))-min(week(date))+1,
+         #day_of_week = lubridate::wday(date, label = TRUE, abbr = TRUE),
          sum_enrolled = NA,
          sum_presenet =NA,
          sum_absent = NA,
@@ -153,9 +163,14 @@ forecast<-httr::GET(url = request_string)
 
 
 forcast_8day<-httr::content(forecast)
-forecast_dfs_list<-lapply(forcast_8day$hourly$data, as.data.frame)
+forecast_dfs<-lapply(forcast_8day$hourly$data, as.data.frame) %>%
+  rbind_all
 
-forecast_df<-rbind_all(forecast_dfs_list) %>%
+if (!"precipType" %in% names(forecast_dfs)) {
+  forecast_dfs <- mutate(forecast_dfs, precipType = NA)
+}
+
+forecast_df <- forecast_dfs %>%
   mutate(date=ymd_hms(as.POSIXct(time, origin="1970-01-01")),
          hour=hour(date),
          date=ymd(strptime(ymd_hms(date), format="%Y-%m-%d")),
@@ -179,8 +194,8 @@ att_by_day_w_targets_projected_weather<-left_join(att_by_day_w_targets_projected
          color=ifelse(!is.na(temp), temp, "Normal Temps"),
      week_of = floor_date(date, unit = "week") ,
      week_of = paste("Week of", 
-                     month(week_of, label = TRUE, abbr = TRUE),
-                     day(week_of)
+                     lubridate::month(week_of, label = TRUE, abbr = TRUE),
+                     lubridate::day(week_of)
                      )
      )
 
@@ -188,7 +203,9 @@ week_ofs <- att_by_day_w_targets_projected_weather %>%
   select(week_of, week) %>% unique
   
 att_by_day_w_targets_projected_weather <- att_by_day_w_targets_projected_weather %>%
-  mutate(week_of=factor(week_of, levels=week_ofs$week_of))
+  mutate(week_of=factor(week_of, levels=week_ofs$week_of),
+         schoolname = factor(schoolname, levels=schoolintials2)
+         )
 
 two_weeks_ago<-floor_date(today(), unit="week") - weeks(4)
 one_week_forward<-floor_date(today(), unit="week") + weeks(1)
@@ -232,7 +249,13 @@ plot_att_goals(att_by_day_w_targets_projected_weather,
                one_week_forward,
                schoolname=="KBCP")
 ```
-
+### KAS
+```{r ada_targets_plot_KAS, echo=FALSE, fig.width=11,fig.height=4}
+plot_att_goals(att_by_day_w_targets_projected_weather, 
+               two_weeks_ago, 
+               one_week_forward,
+               schoolname=="KAS")
+```
 
 ### Summary Table 
 ```{r target_table_html, echo=FALSE, results='hide', mandrill.content=TRUE}
@@ -346,6 +369,18 @@ mandrill_send_template(api_key = keys$mandrill_key,
                        content=list(time_stamp=time_stamp2,
                                     target_table=target_table_html),
                        images=figs[grepl("KBCP", figs)],
+                       css=TRUE
+)
+
+message("Mandrill mailing KAS team now")
+mandrill_send_template(api_key = keys$mandrill_key,
+                       recipient = rcpts_kas,
+                       subject = subject,
+                       template_name = "war-kas",
+                       sender="data@kippchicago.org",
+                       content=list(time_stamp=time_stamp2,
+                                    target_table=target_table_html),
+                       images=figs[grepl("KAS", figs)],
                        css=TRUE
 )
 

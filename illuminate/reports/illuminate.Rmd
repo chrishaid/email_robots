@@ -1,0 +1,245 @@
+---
+title: Weekly Assessment Report
+author: "Chris Haid"
+date: "`r lubridate::today()`"
+output: html_document
+---
+```{r knitr_opts, include=FALSE}
+require(knitr)
+opts_chunk$set(echo=FALSE, 
+               warning=FALSE,
+               message=FALSE,
+               cache=FALSE
+               )
+
+
+mandrill_content_hook<-function(before, options, envir){
+  if(!before){
+
+    #after chunk add these lines
+    return(sprintf('<div mc:edit="%s">%s</div>', options$label, options$label))
+    opts_chunk$set(results='show')
+  }
+}
+
+knit_hooks$set(mandrill.content = mandrill_content_hook)
+```
+
+```{r load_packages}
+require(yaml)
+require(illuminater)
+require(RMandrill)
+require(purrr)
+require(stringr)
+require(lubridate)
+
+source("../lib/helpers.R")
+```
+
+```{r get_illuminate_data, include=FALSE}
+
+silo <- as.data.frame(read.dcf('../config//silo.dcf'))
+
+ill<-connect_illuminate(server = as.character(silo$url),
+                        database = as.character(silo$ill_dbname),
+                        user = as.character(silo$user),
+                        password = as.character(silo$password),
+                        db_type = "warehouse")
+
+ps<-connect_illuminate(server = as.character(silo$url),
+                        database = as.character(silo$ps_dbname),
+                        user = silo$user,
+                        password = silo$password,
+                        db_type = "warehouse")
+
+ill_obj <- illuminater(ill, ps, "students")
+
+# add school initials to roster file
+
+school_ids_names <- data_frame(schoolid = c(78102, 7810, 400146, 400163),
+                               school = c("KAP", "KAMS", "KCCP", "KBCP")
+                               )
+
+
+ill_obj$roster <- ill_obj$roster %>%
+  inner_join(school_ids_names, by="schoolid") %>%
+  mutate(school = ifelse(school == "KBCP" & grade_level == 5,
+                         "KAS",
+                         school))
+
+
+
+```
+
+```{r munge}
+
+results_max_unit <- ill_obj$results %>%
+  mutate(unit_number = as.integer(str_extract(assm_unit, "\\d+"))) %>%
+  inner_join(ill_obj$roster %>% 
+               mutate(local_student_id = as.character(student_number)) %>% 
+               select(local_student_id, school_name = school),
+            by="local_student_id" 
+            ) %>%
+  filter(local_id_conforms) %>%
+  group_by(school_name, assm_subj, assm_grade) %>%
+  filter(unit_number==max(unit_number))
+
+
+  roster_current <- ill_obj$roster %>%
+    filter(enroll_status == 0) 
+
+  roster_subj_unit_scaffold <- results_max_unit %>%
+    ungroup %>%
+    select(local_student_id, subj = assm_subj, grade = assm_grade, unit = assm_unit) %>%
+    unique %>%
+    inner_join(roster_current %>% 
+                 mutate(local_student_id = as.character(student_number)),
+               by = "local_student_id"
+               )
+  
+```
+
+```{r gather_mastery_graphs}
+  mastery_grid_plots <- roster_subj_unit_scaffold %>%
+    split(list(.$subj, .$unit, .$school, .$grade_level, .$home_room)) %>%
+    discard(~nrow(.)==0) %>%
+    map( ~ try(mastery_grid_plot(results_max_unit,
+                                 .,
+                                 school_id = unique(.$schoolid),
+                                 school_name = as.character(unique(.$school)),
+                                 academic_year==2016,
+                                 assm_grade==unique(.$grade_level),
+                                 assm_subj == unique(.$subj),
+                                 assm_unit == unique(.$unit)
+                                 ) +
+                 ggtitle(sprintf("%s %s %s: %s",
+                                 ordinate(unique(.$grade_level)),
+                                 unique(.$school),
+                                 toupper(unique(.$subj)),
+                                 unique(.$home_room)
+                                 )
+                         ),
+               silent = FALSE
+               )
+         ) %>%
+    discard(~inherits(., "try-error"))
+  
+  
+
+  mastery_long_plots <-  roster_subj_unit_scaffold %>%
+    split(list(.$subj, .$unit, .$school, .$grade_level)) %>%
+    discard(~nrow(.)==0) %>%
+    map( ~ try(mastery_long_plot(ill_obj$results,
+                                 .,
+                                 school_id = unique(.$schoolid),
+                                 school_name = as.character(unique(.$school)),
+                                 academic_year==2016,
+                                 assm_grade==unique(.$grade_level),
+                                 assm_subj == unique(.$subj),
+                                 assm_unit == unique(.$unit)
+                                 ) +
+                 ggtitle(sprintf("%s  %s: %s",
+                                 ordinate(unique(.$grade_level)),
+                                 toupper(unique(.$subj)),
+                                 unique(.$school)
+                 )
+                 ),
+               silent = FALSE
+    )
+    ) %>%
+    discard(~inherits(., "try-error"))
+
+```
+
+
+```{r get_recipients}
+
+send_to <- yaml.load_file("../config/send_to.yml")
+
+recipients <- flatten(send_to, .recursive = TRUE) %>%
+  data_frame(code = names(.), email_addr = .) %>%
+  mutate(school = str_extract(code, "^\\w{3,4}"),
+         subj = str_replace(tolower(code), "(^\\w+\\.)([a-z]+)(\\.\\d+$)", "\\2"),
+         grade = str_extract(code, "\\d"))
+```
+
+# Weekly Assessment Update
+Here's your weekly summary of assessment data.
+
+```{r timestamp, mandrill.content = TRUE}
+time_stamp<-lubridate::stamp("These data are current as of Tuesday, September 14, 2001 at 4:41 pm")(now())
+```
+
+### KIPP Chicago Standards Mastered
+```{r prep_plot, echo=FALSE, warning=FALSE, message=FALSE, results=FALSE, include=FALSE}
+
+#summary_plot <- get_graphs(mastery_long_plots, "kap", "ela", grade = 5)
+#detail_plots <- get_graphs(mastery_grid_plots, "kap", "ela", grade = 5)
+
+
+# file_ext <- names(summary_plot) %>% str_replace_all("\\.", "_")
+# 
+# png_temp_dir <- tempdir()
+# 
+# png_temp<-paste0(png_temp_dir, "/ada_targets_plot_new-1.png")
+# pdf_temp <- paste0(png_temp_dir, "/illuminate_rollups_", file_ext, ".pdf")
+# 
+# png(filename = png_temp)
+#   summary_plot
+# dev.off()
+# 
+# cairo_pdf(file = pdf_temp, height = 8.4, width=10.9, onefile = TRUE)
+#   summary_plot
+#   detail_plots
+# dev.off()
+
+
+
+# unlink("png_temp_dir")
+
+```
+
+```{r plot}
+# summary_plot$ela.u2.KAP.5
+```
+
+
+```{r mandrill_call}
+
+
+
+# send_mandrill_mail(mastery_long_plots_list = mastery_long_plots, 
+#                    mastery_grid_plots_list =  mastery_grid_plots,
+#                    school = "kbcp",
+#                    subject = "sci",
+#                    grade = "8",
+#                    content_list = list(timestamp=time_stamp),
+#                    api_key = silo$mandrill_key,
+#                    recipient =  "chaid@kippchicago.org"       
+#                     )
+
+recipients %>% 
+  split(list(.$code)) %>%
+  walk(~try(send_mandrill_mail(school = .$school,
+                         subject = .$subj,
+                         grade = .$grade,
+                         recipient = .$email_addr,
+                         mastery_long_plots_list = mastery_long_plots,
+                         mastery_grid_plots_list =  mastery_grid_plots,
+                         content_list = list(timestamp=time_stamp),
+                         api_key = silo$mandrill_key
+                         ),
+            
+            silent = FALSE)
+       )
+
+
+
+```
+
+
+
+
+
+
+

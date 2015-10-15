@@ -1,7 +1,7 @@
 ---
 title: "Daily Attendance Report"
 author: "Chris Haid"
-date: "2015-05-13"
+date: "2015-10-14"
 output: html_document
 ---
 
@@ -11,7 +11,7 @@ output: html_document
 
 
 
-*Attendance data as of Wednesday, May 13, 2015 at 12:00 PM*
+*Attendance data as of Wednesday, October 14, 2015 at 12:00 PM*
 
 # Weekly Attendance Report
 <div mc:edit="time_stamp">time_stamp</div>
@@ -37,7 +37,8 @@ For more info go to [KIPP IDEA](idea.kippchicago.org).
 
 ### KBCP
 ![plot of chunk ada_targets_plot_KBCP](figure/ada_targets_plot_KBCP-1.png) 
-
+### KAS
+![plot of chunk ada_targets_plot_KAS](figure/ada_targets_plot_KAS-1.png) 
 
 ### Summary Table 
 <div mc:edit="target_table_html">target_table_html</div>
@@ -86,7 +87,7 @@ mandrill_send_template(api_key = keys$mandrill_key,
 ## [1] "sent"
 ## 
 ## [[1]]$`_id`
-## [1] "83a748c92a7a46b88f2c6ace282ecc55"
+## [1] "4f080261beea4264a80af2ffc82808e2"
 ## 
 ## [[1]]$reject_reason
 ## NULL
@@ -100,7 +101,7 @@ mandrill_send_template(api_key = keys$mandrill_key,
 ## [1] "sent"
 ## 
 ## [[2]]$`_id`
-## [1] "adb56052931f454bb3a2a6ab5b93787f"
+## [1] "244e095e5b064e2ba12d924c3dc33069"
 ## 
 ## [[2]]$reject_reason
 ## NULL
@@ -114,7 +115,7 @@ mandrill_send_template(api_key = keys$mandrill_key,
 ## [1] "sent"
 ## 
 ## [[3]]$`_id`
-## [1] "d6911de144a64ab8b396e89e2329c08e"
+## [1] "b935bb6112e84df78641f3568e14abcd"
 ## 
 ## [[3]]$reject_reason
 ## NULL
@@ -128,7 +129,7 @@ mandrill_send_template(api_key = keys$mandrill_key,
 ## [1] "sent"
 ## 
 ## [[4]]$`_id`
-## [1] "bb6eb5e114ee44648315a35209aec1f4"
+## [1] "fa0525dda54643088e9d79eb4fcc19b0"
 ## 
 ## [[4]]$reject_reason
 ## NULL
@@ -142,7 +143,7 @@ mandrill_send_template(api_key = keys$mandrill_key,
 ## [1] "sent"
 ## 
 ## [[5]]$`_id`
-## [1] "613bb6df4c02415da768af35e0a2e598"
+## [1] "948c384c10cf47c99e3f7e92d35df8a7"
 ## 
 ## [[5]]$reject_reason
 ## NULL
@@ -165,13 +166,13 @@ mandrill_send_template(api_key = keys$mandrill_key,
 ```
 ## [[1]]
 ## [[1]]$email
-## [1] "ebhattacharyya@kippchicago.org"
+## [1] "chaid@kippchicago.org"
 ## 
 ## [[1]]$status
 ## [1] "sent"
 ## 
 ## [[1]]$`_id`
-## [1] "025fdc6689e148aeb27902f8f7dbc70a"
+## [1] "25078739f16f4b3f8a52ed803e96583c"
 ## 
 ## [[1]]$reject_reason
 ## NULL
@@ -179,13 +180,13 @@ mandrill_send_template(api_key = keys$mandrill_key,
 ## 
 ## [[2]]
 ## [[2]]$email
-## [1] "chaid@kippchicago.org"
+## [1] "ebhattacharyya@kippchicago.org"
 ## 
 ## [[2]]$status
 ## [1] "sent"
 ## 
 ## [[2]]$`_id`
-## [1] "4b02f1c136b14d6da73f8749877203be"
+## [1] "10739df3bd004b0f981750626c04de6e"
 ## 
 ## [[2]]$reject_reason
 ## NULL
@@ -208,13 +209,13 @@ mandrill_send_template(api_key = keys$mandrill_key,
 ```
 ## [[1]]
 ## [[1]]$email
-## [1] "lhenley@kippchicago.org"
+## [1] "chaid@kippchicago.org"
 ## 
 ## [[1]]$status
 ## [1] "sent"
 ## 
 ## [[1]]$`_id`
-## [1] "9f1e0f9e48734b58bc0e9a076717358e"
+## [1] "af12dd605a3c4dbcaf4072ac0442b880"
 ## 
 ## [[1]]$reject_reason
 ## NULL
@@ -222,13 +223,13 @@ mandrill_send_template(api_key = keys$mandrill_key,
 ## 
 ## [[2]]
 ## [[2]]$email
-## [1] "chaid@kippchicago.org"
+## [1] "lhenley@kippchicago.org"
 ## 
 ## [[2]]$status
 ## [1] "sent"
 ## 
 ## [[2]]$`_id`
-## [1] "6c6230d1dde841eeb0fdbfa64182db51"
+## [1] "efba25494af648769c813090bedfd4a3"
 ## 
 ## [[2]]$reject_reason
 ## NULL
@@ -251,13 +252,13 @@ mandrill_send_template(api_key = keys$mandrill_key,
 ```
 ## [[1]]
 ## [[1]]$email
-## [1] "kmazurek@kippchicago.org"
+## [1] "chaid@kippchicago.org"
 ## 
 ## [[1]]$status
 ## [1] "sent"
 ## 
 ## [[1]]$`_id`
-## [1] "e320b3b4c387456888384273bbee236b"
+## [1] "530849d01be74fc38301facb384508c8"
 ## 
 ## [[1]]$reject_reason
 ## NULL
@@ -265,13 +266,13 @@ mandrill_send_template(api_key = keys$mandrill_key,
 ## 
 ## [[2]]
 ## [[2]]$email
-## [1] "chaid@kippchicago.org"
+## [1] "kmazurek@kippchicago.org"
 ## 
 ## [[2]]$status
 ## [1] "sent"
 ## 
 ## [[2]]$`_id`
-## [1] "4617b928d3ab4efabcbd208fefd24dc8"
+## [1] "bbe0fc48cf254f63a86bcea232974a18"
 ## 
 ## [[2]]$reject_reason
 ## NULL
@@ -294,13 +295,13 @@ mandrill_send_template(api_key = keys$mandrill_key,
 ```
 ## [[1]]
 ## [[1]]$email
-## [1] "esale@kippchicago.org"
+## [1] "chaid@kippchicago.org"
 ## 
 ## [[1]]$status
 ## [1] "sent"
 ## 
 ## [[1]]$`_id`
-## [1] "86f5282d6eff4acdafbf2ab1bfb2b736"
+## [1] "329680c8cf2c44b7831b5bfd51504c95"
 ## 
 ## [[1]]$reject_reason
 ## NULL
@@ -308,16 +309,34 @@ mandrill_send_template(api_key = keys$mandrill_key,
 ## 
 ## [[2]]
 ## [[2]]$email
-## [1] "chaid@kippchicago.org"
+## [1] "esale@kippchicago.org"
 ## 
 ## [[2]]$status
 ## [1] "sent"
 ## 
 ## [[2]]$`_id`
-## [1] "362ebc1259b241b8b4b1b1ec2a0d8474"
+## [1] "ccc4ca12611540e7ae2ec47853ceda12"
 ## 
 ## [[2]]$reject_reason
 ## NULL
+```
+
+```r
+message("Mandrill mailing KAS team now")
+mandrill_send_template(api_key = keys$mandrill_key,
+                       recipient = rcpts_kas,
+                       subject = subject,
+                       template_name = "war-kas",
+                       sender="data@kippchicago.org",
+                       content=list(time_stamp=time_stamp2,
+                                    target_table=target_table_html),
+                       images=figs[grepl("KAS", figs)],
+                       css=TRUE
+)
+```
+
+```
+## Error in data.frame(email = recipient, stringsAsFactors = FALSE): object 'rcpts_kas' not found
 ```
 
 
