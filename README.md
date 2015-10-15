@@ -14,7 +14,7 @@ This should get you started, but feel free to reach out with any questsions:
 
 2. Data goes in `data/`, preprocessing in `munge`, configurations in `config`, etc.  
 
-3. ~~Create Proof of concept mailers can be created in the `reports/` directory via [an `Rmd` file](http://rmarkdown.rstudio.com/). ~(Eventually I'll add to RMandrill a  function to create a Mandrill template along with a source file for variable data/images form the original RMD.  Maybe by extending `knitr`.~~ You can simply knit the`Rmd` to `html` and edit the resulting `html` to create a Mandrill template. To help with templating you can create a custom knitr chunk option by inserting the following code in a chunk near the top of the `Rmd`:
+3. Create Proof of concept mailers can be created in the `reports/` directory via [an `Rmd` file](http://rmarkdown.rstudio.com/). ~~(Eventually I'll add to RMandrill a  function to create a Mandrill template along with a source file for variable data/images form the original RMD.  Maybe by extending `knitr`.~~ You can simply knit the`Rmd` to `html` and edit the resulting `html` to create a Mandrill template. To help with templating you can create a custom knitr chunk option by inserting the following code in a chunk near the top of the `Rmd`:
 
 ```r
 mandrill_content_hook<-function(before, options, envir){
