@@ -1,5 +1,5 @@
 # email_robots
-Automate emailing for KIPP Chicago using Mandrill. 
+Automated emailing for KIPP Chicago using Mandrill. 
 
 ## Prereqs
 ```r
@@ -7,7 +7,7 @@ devtools::install_github('Gastrograph/RMandrill")
 # devtools::install_github('chrishaid/RMandrill@attachments") # if you need attachment functionality
 ```
 
-## Implementing a a mailer
+## Implementing a mailer
 This should get you started, but feel free to reach out with any questsions:
 
 1. Use `ProjectTemplate` to create separate project of a given mailer topic (attendence, recruitment, etc.).  
