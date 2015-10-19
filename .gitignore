@@ -28,3 +28,5 @@ data/*
 reports/figure/*
 figures/*
 *.png
+figure/*
+*.pdf

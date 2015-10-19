@@ -22,6 +22,17 @@ kbcp:
       - esale@kippchicago.org
       - jcannon@kippchicago.org
       - chaid@kippchicago.org
+  ela:
+    6:
+      - bbaker@kippchicago.org
+      - lspears@kippchicago.org
+      - esale@kippchicago.org
+      - chaid@kippchicago.org
+    7:
+      - mrodriguez@kippchicago.org
+      - esale@kippchicago.org
+      - chaid@kippchicago.org
+      
     
 kas:
   sci:
@@ -38,4 +49,52 @@ kas:
       - klee@kippchicago.org
       - chaid@kippchicago.org
       - vpathiparampil@kippchicago.org 
-      
+  ela:
+    5: 
+      - mkoler@kippchicago.org
+      - vpathiparampil@kippchicago.org
+      - klee@kippchicago.org
+      - chaid@kippchicago.org
+
+kams:
+  sci:
+    6: 
+      - edelaney@kippchicago.org
+      - lhenley@kippchicago.org
+      - chaid@kippchicago.org
+    7: 
+      - mschwartz@kippchicago.org
+      - edelaney@kippchicago.org
+      - lhenley@kippchicago.org
+      - chaid@kippchicago.org
+  math:
+    6: 
+      - ekelp@kippchicago.org
+      - jcannon@kippchicago.org
+      - lhenley@kippchicago.org
+      - chaid@kippchicago.org
+    7: 
+      - omcquade@kippchicago.org
+      - jcannon@kippchicago.org
+      - lhenley@kippchicago.org
+      - chaid@kippchicago.org
+    8:
+      - mlaperuto@kippchicago.org
+      - jcannon@kippchicago.org
+      - lhenley@kippchicago.org
+      - chaid@kippchicago.org
+  ela:
+    6:
+      - jtheibert@kippchicago.org
+      - lharrison@kippchicago.org
+      - lhenley@kippchicago.org
+      - chaid@kippchicago.org
+    7:
+      - lharrison@kippchicago.org
+      - lhenley@kippchicago.org
+      - chaid@kippchicago.org
+    8:
+      - ehawkins@kippchicago.org
+      - lharrison@kippchicago.org
+      - lhenley@kippchicago.org
+      - chaid@kippchicago.org  
