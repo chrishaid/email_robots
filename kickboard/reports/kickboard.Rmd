@@ -1,0 +1,241 @@
+---
+title: "Kickboard Data"
+author: "Chris Haid"
+date: "`r lubridate::today()`"
+output: html_document
+---
+```{r knitr_opts, include=FALSE}
+require(knitr)
+opts_chunk$set(echo=FALSE, 
+               warning=FALSE,
+               message=FALSE,
+               cache=FALSE
+               )
+
+
+mandrill_content_hook<-function(before, options, envir){
+  if(!before){
+
+    #after chunk add these lines
+    return(sprintf('<div mc:edit="%s">%s</div>', options$label, options$label))
+    opts_chunk$set(results='show')
+  }
+}
+
+knit_hooks$set(mandrill.content = mandrill_content_hook)
+```
+
+```{r load_packages}
+
+require(RMandrill)
+require(dplyr)
+require(tidyr)
+require(purrr)
+require(stringr)
+require(lubridate)
+require(httr)
+require(rvest)
+require(readr)
+require(log4r)
+
+source("../lib/helpers.R")
+```
+
+
+```{r get_data_and_munge}
+logger <- create.logger()
+
+logfile(logger) <- file.path("../logs", "kb.log")
+
+level(logger) <- "INFO"
+
+info(logger, "Reading Credentials")
+config <- read.dcf("../config/creds.dcf", all=TRUE)
+
+info(logger, "Establishing Kickboard session")
+kb <- html_session(url = config$auth_url)
+
+
+info(logger, "Authenticating to Kickboard")
+kb %>% 
+  html_node("form") %>% 
+  html_form() %>% 
+  set_values(username = config$kb_uid, 
+             user_password = config$kb_pwd) %>%
+  submit_form(kb, .)
+
+if( kb$response$status_code != 200) {
+  fatal(logger, sprintf("Response status code not 200; instead = %s", 
+                        kb$response$status_code))
+  stop("Response status code not 200.")
+}
+  
+info(logger, "Navigating to Culture page")
+response1 <- kb %>% jump_to(url = config$csv_url)
+  
+info(logger, "Getting culture csv")
+csv <- kb %>% 
+  jump_to(url = paste0(config$csv_url, "/export/"))
+
+
+info(logger, "Extrating csv from response to data frame")
+kb_df <- read_csv(content(csv$response, as="text"))
+
+names(kb_df) <- gsub("\\s", "_", names(kb_df))
+
+info(logger, "Begin processing kb_df")
+info(logger, "Getting today's date")
+
+todays_date <- today()
+
+start_date <- floor_date(todays_date, unit="week")
+end_date <- ceiling_date(todays_date, unit="week") - days(1)
+
+week_filter <- interval(ymd(start_date), ymd(end_date))
+
+info(logger, "Identify merit points and paycheck deductions")
+kb_df <- kb_df %>%
+  mutate(CreatePoint = is.na(Dollar_Value))
+
+info(logger, "Removing deposits and subsetting to this week")
+kb_long <- kb_df %>%
+  filter(Behavior != "Deposit",
+         Behavior_Date %within% week_filter) %>%
+  #mutate(Dollar_Value = as.factor(Dollar_Value)) %>%
+  select(Student, 
+         Group, 
+         CreatePoint, 
+         Behavior, 
+         Dollar_Value, 
+         Behavior_Date, 
+         Staff, 
+         Comments) %>%
+  gather(variable, value, 
+         Behavior, Dollar_Value, Behavior_Date, Staff, Comments,
+         na.rm = TRUE)
+
+info(logger, "Renaming variables")
+levels(kb_long$variable) <- c("Behavior", "Dollar", "Date", "Staff", "Comments")
+
+
+info(logger, "Numering events")
+kb_long_2 <- kb_long %>%
+  group_by(Student, CreatePoint, variable) %>%
+  mutate(OrderID = row_number(value),
+         variable2 = paste(OrderID, variable, OrderID, sep = " ")) %>%
+  arrange(Group, Student, CreatePoint)
+
+
+max_events <- max(kb_long_2$OrderID, na.rm = TRUE)
+
+
+kb_wide <- kb_long_2 %>% ungroup %>%
+  select(Student, Group, CreatePoint, variable2, value) %>%
+  spread(variable2, value) %>%
+  arrange(Student, Group)
+
+names(kb_wide) <- gsub("(\\d{1,2})(\\s)(Behavior|Date|Comments|Dollar|Staff)(\\s)(\\d{1,2})", "\\3\\4\\5",   names(kb_wide))
+
+col_order<-vector()
+cats<-c("Behavior", "Dollar","Date", "Staff", "Comments")
+for(j in 1:max_events){
+    cols_new<-paste(cats, j, sep=" ")
+    col_order<-c(col_order, cols_new)
+} 
+
+info(logger, "Calculating Paycheck totals")
+paycheck <- kb_long %>%
+  filter(variable == "Dollar") %>%
+  group_by(Student, Group) %>%
+  summarize(Paycheck = 50 + sum(as.numeric(value), na.rm = TRUE))
+
+
+info(logger, "Mergig paycheck totals with events")
+kb_joined <- kb_wide %>%
+  left_join(paycheck,
+            by=c("Student", "Group"))
+
+col_order_reduced <- col_order[col_order %in% names(kb_joined)]
+  
+kb_out <- kb_joined[,c("Student", "Group", "Paycheck", col_order_reduced)] %>%
+  rename(Homeroom = Group) %>%
+  arrange(Homeroom, Student)
+
+glimpse(kb_out)
+
+info(logger, "Writing data to disk")
+
+file_name <- sprintf("KCCP_KB_%s.csv", format(todays_date, '%y%m%d'))
+out_path <- file.path("../attachments", file_name)
+
+write_csv(kb_out, out_path, na="")
+
+```
+
+
+```{r timestamp, mandrill.content = TRUE}
+time_stamp<-lubridate::stamp("These data are current as of Tuesday, September 14, 2001 at 4:41 pm")(now())
+```
+
+```{r summar_plot}
+
+kb_plot <- kb_df %>%
+  mutate(this_week = ymd(Behavior_Date) %within% week_filter,
+         rest_of_year = !this_week) %>%
+  group_by(Group, Behavior, CreatePoint, this_week, rest_of_year) %>%
+  summarize(Count = n()) 
+
+kb_cats <- kb_plot %>% group_by(Behavior) %>%
+  summarize(Count = sum(Count)) %>%
+  arrange(Count)
+
+kb_plot$Behavior <- factor(kb_plot$Behavior, levels = kb_cats$Behavior)
+kb_plot$this_week2 <- factor(as.character(kb_plot$this_week), levels = c("FALSE", "TRUE"))
+
+  ggplot(kb_plot %>% filter(CreatePoint), aes(y=Count, x=Behavior)) +
+    geom_bar(aes(fill=factor(this_week2)), position = "stack", stat="identity") + coord_flip() + 
+    facet_grid(.~Group)
+
+```
+
+```{r send_mail}
+
+send_to<-config$mail_to %>% 
+  str_split(",") %>% 
+  unlist()
+
+email_subject <- sprintf("Weekly Kickboard Data for %s",
+                           today()
+  )
+
+info(logger, "Sending email")
+resp <- mandrill_send_template(api_key = config$mandrill_key,
+                       recipient = send_to,
+                       subject = email_subject,
+                       contents = list(timestamp=time_stamp),
+                       template_name = "kickboard-data",
+                       sender="data@kippchicago.org",
+                       attachments = out_path,
+                       css=FALSE
+)
+
+for (i in length(resp)){
+  status_mandrill <- resp[[1]][["status"]]
+  if(status_mandrill != "queued"){
+    fatal(logger, sprintf("Email for %s was not queued for email",
+                          resp[[1]][["email"]]
+                          )
+    )
+  } else {
+     info(logger, sprintf("Email for %s queued",
+                          resp[[1]][["email"]]
+                          )
+    )
+  }
+}
+
+
+
+info(logger, "Done!")
+```
+

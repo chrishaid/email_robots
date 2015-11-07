@@ -6,33 +6,38 @@ kbcp:
        - esale@kippchicago.org
        - jcannon@kippchicago.org
        - chaid@kippchicago.org
+       - apouba@kippchicago.org
     7: 
-      - apaz@@kippchicago.org
+      - apaz@kippchicago.org
       - esale@kippchicago.org
       - jcannon@kippchicago.org
       - chaid@kippchicago.org
+      - apouba@kippchicago.org
   math:
     6: 
       - dwhitlock@kippchicago.org
       - lspears@kippchicago.org
       - esale@kippchicago.org
       - chaid@kippchicago.org
+      - apouba@kippchicago.org
     7: 
       - aalbert@kippchicago.org
       - esale@kippchicago.org
       - jcannon@kippchicago.org
       - chaid@kippchicago.org
+      - apouba@kippchicago.org
   ela:
     6:
       - bbaker@kippchicago.org
       - lspears@kippchicago.org
       - esale@kippchicago.org
       - chaid@kippchicago.org
+      - apouba@kippchicago.org
     7:
       - mrodriguez@kippchicago.org
       - esale@kippchicago.org
       - chaid@kippchicago.org
-      
+      - apouba@kippchicago.org
     
 kas:
   sci:
@@ -42,6 +47,7 @@ kas:
       - jcannon@kippchicago.org
       - chaid@kippchicago.org
       - vpathiparampil@kippchicago.org
+      - apouba@kippchicago.org
   math:
     5: 
       - wpaul@kippchicago.org
@@ -49,12 +55,14 @@ kas:
       - klee@kippchicago.org
       - chaid@kippchicago.org
       - vpathiparampil@kippchicago.org 
+      - apouba@kippchicago.org
   ela:
     5: 
       - mkoler@kippchicago.org
       - vpathiparampil@kippchicago.org
       - klee@kippchicago.org
       - chaid@kippchicago.org
+      - apouba@kippchicago.org
 
 kams:
   sci:
@@ -62,39 +70,122 @@ kams:
       - edelaney@kippchicago.org
       - lhenley@kippchicago.org
       - chaid@kippchicago.org
+      - apouba@kippchicago.org
     7: 
       - mschwartz@kippchicago.org
       - edelaney@kippchicago.org
       - lhenley@kippchicago.org
       - chaid@kippchicago.org
+      - apouba@kippchicago.org
   math:
     6: 
       - ekelp@kippchicago.org
       - jcannon@kippchicago.org
       - lhenley@kippchicago.org
       - chaid@kippchicago.org
+      - apouba@kippchicago.org
     7: 
       - omcquade@kippchicago.org
       - jcannon@kippchicago.org
       - lhenley@kippchicago.org
       - chaid@kippchicago.org
+      - apouba@kippchicago.org
     8:
       - mlaperuto@kippchicago.org
       - jcannon@kippchicago.org
       - lhenley@kippchicago.org
       - chaid@kippchicago.org
+      - apouba@kippchicago.org
   ela:
     6:
       - jtheibert@kippchicago.org
       - lharrison@kippchicago.org
       - lhenley@kippchicago.org
       - chaid@kippchicago.org
+      - apouba@kippchicago.org
     7:
       - lharrison@kippchicago.org
       - lhenley@kippchicago.org
       - chaid@kippchicago.org
+      - apouba@kippchicago.org
     8:
       - ehawkins@kippchicago.org
       - lharrison@kippchicago.org
       - lhenley@kippchicago.org
-      - chaid@kippchicago.org  
+      - chaid@kippchicago.org 
+      - apouba@kippchicago.org
+      
+kccp:
+  sci:
+    6:
+      - dyork@kippchicago.org
+      - jvalerio@kippchicago.org
+      - kmazurek@kippchicago.org
+      - chaid@kippchicago.org
+      - apouba@kippchicago.org
+    7:
+      - sdelorme@kippchicago.org
+      - ymoran@kippchicago.org
+      - kmazurek@kippchicago.org
+      - chaid@kippchicago.org
+      - apouba@kippchicago.org
+    8:
+      - afeduniec@kippchicago.org
+      - kmazurek@kippchicago.org
+      - chaid@kippchicago.org
+      - apouba@kippchicago.org
+    
+  math:
+    5:
+      - mdahlberg@kippchicago.org
+      - jvalerio@kippchicago.org
+      - dmcbride@kippchicago.org
+      - kmazurek@kippchicago.org
+      - chaid@kippchicago.org
+      - apouba@kippchicago.org
+    6:
+      - dmcbride@kippchicago.org
+      - jvalerio@kippchicago.org
+      - kmazurek@kippchicago.org
+      - chaid@kippchicago.org
+      - apouba@kippchicago.org
+    7:
+      - dmcbride@kippchicago.org
+      - ymoran@kippchicago.org
+      - kmazurek@kippchicago.org
+      - chaid@kippchicago.org
+      - apouba@kippchicago.org
+    8:
+      - awilson@kippchicago.org
+      - dmcbride@kippchicago.org
+      - kmazurek@kippchicago.org
+      - chaid@kippchicago.org
+      - apouba@kippchicago.org
+    
+  ela:
+    5:
+      - ballen@kippchicago.org
+      - jvalerio@kippchicago.org
+      - bwiegand@kippchicago.org
+      - kmazurek@kippchicago.org
+      - chaid@kippchicago.org
+      - apouba@kippchicago.org
+    6:
+      - jvalerio@kippchicago.org
+      - kmazurek@kippchicago.org
+      - chaid@kippchicago.org
+      - apouba@kippchicago.org
+    7:
+      - aerskine@kippchicago.org
+      - ymoran@kippchicago.org
+      - hmoran@kippchicago.org
+      - bwiegand@kippchicago.org
+      - kmazurek@kippchicago.org
+      - chaid@kippchicago.org
+      - apouba@kippchicago.org
+    8:
+      - hmoran@kippchicago.org
+      - bwiegand@kippchicago.org
+      - kmazurek@kippchicago.org
+      - chaid@kippchicago.org
+      - apouba@kippchicago.org

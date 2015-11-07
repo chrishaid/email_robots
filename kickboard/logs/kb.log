@@ -1,0 +1,219 @@
+[ 2015-11-06 07:32:58 ] INFO Reading Credentials 
+[ 2015-11-06 07:33:14 ] INFO Establishing Kickboard session 
+[ 2015-11-06 07:33:16 ] INFO Authenticating to Kickboard 
+[ 2015-11-06 07:36:37 ] INFO Reading Credentials 
+[ 2015-11-06 07:36:39 ] INFO Establishing Kickboard session 
+[ 2015-11-06 07:36:45 ] INFO Authenticating to Kickboard 
+[ 2015-11-06 07:39:28 ] INFO Navigating to Culture page 
+[ 2015-11-06 07:47:19 ] INFO Getting culture csv 
+[ 2015-11-06 07:47:21 ] INFO Extrating csv from response to data frame 
+[ 2015-11-06 08:47:30 ] INFO Renaming variables 
+[ 2015-11-06 09:34:32 ] INFO Numering events 
+[ 2015-11-06 10:57:05 ] INFO Reading Credentials 
+[ 2015-11-06 10:57:05 ] INFO Establishing Kickboard session 
+[ 2015-11-06 10:57:05 ] INFO Authenticating to Kickboard 
+[ 2015-11-06 10:57:06 ] INFO Navigating to Culture page 
+[ 2015-11-06 10:57:06 ] INFO Getting culture csv 
+[ 2015-11-06 10:57:06 ] INFO Extrating csv from response to data frame 
+[ 2015-11-06 10:57:06 ] INFO Begin processing kb_df 
+[ 2015-11-06 10:57:06 ] INFO Getting today's date 
+[ 2015-11-06 10:57:06 ] INFO Identify merit points and paycheck deductions 
+[ 2015-11-06 10:57:06 ] INFO Removing deposits and subsetting to this week 
+[ 2015-11-06 10:57:06 ] INFO Renaming variables 
+[ 2015-11-06 10:57:06 ] INFO Numering events 
+[ 2015-11-06 10:57:06 ] INFO Calculating Paycheck totals 
+[ 2015-11-06 10:57:06 ] INFO Mergig paycheck totals with events 
+[ 2015-11-06 10:57:06 ] INFO Writing data to disk 
+[ 2015-11-06 10:58:33 ] INFO Reading Credentials 
+[ 2015-11-06 10:58:33 ] INFO Establishing Kickboard session 
+[ 2015-11-06 10:58:33 ] INFO Authenticating to Kickboard 
+[ 2015-11-06 10:58:34 ] INFO Navigating to Culture page 
+[ 2015-11-06 10:58:34 ] INFO Getting culture csv 
+[ 2015-11-06 10:58:34 ] INFO Extrating csv from response to data frame 
+[ 2015-11-06 10:58:34 ] INFO Begin processing kb_df 
+[ 2015-11-06 10:58:34 ] INFO Getting today's date 
+[ 2015-11-06 10:58:34 ] INFO Identify merit points and paycheck deductions 
+[ 2015-11-06 10:58:34 ] INFO Removing deposits and subsetting to this week 
+[ 2015-11-06 10:58:34 ] INFO Renaming variables 
+[ 2015-11-06 10:58:34 ] INFO Numering events 
+[ 2015-11-06 10:58:34 ] INFO Calculating Paycheck totals 
+[ 2015-11-06 10:58:34 ] INFO Mergig paycheck totals with events 
+[ 2015-11-06 10:58:34 ] INFO Writing data to disk 
+[ 2015-11-06 11:02:10 ] INFO Reading Credentials 
+[ 2015-11-06 11:02:10 ] INFO Establishing Kickboard session 
+[ 2015-11-06 11:02:10 ] INFO Authenticating to Kickboard 
+[ 2015-11-06 11:02:11 ] INFO Navigating to Culture page 
+[ 2015-11-06 11:02:11 ] INFO Getting culture csv 
+[ 2015-11-06 11:02:11 ] INFO Extrating csv from response to data frame 
+[ 2015-11-06 11:02:11 ] INFO Begin processing kb_df 
+[ 2015-11-06 11:02:11 ] INFO Getting today's date 
+[ 2015-11-06 11:02:11 ] INFO Identify merit points and paycheck deductions 
+[ 2015-11-06 11:02:11 ] INFO Removing deposits and subsetting to this week 
+[ 2015-11-06 11:02:11 ] INFO Renaming variables 
+[ 2015-11-06 11:02:11 ] INFO Numering events 
+[ 2015-11-06 11:02:11 ] INFO Calculating Paycheck totals 
+[ 2015-11-06 11:02:11 ] INFO Mergig paycheck totals with events 
+[ 2015-11-06 11:02:11 ] INFO Writing data to disk 
+[ 2015-11-06 11:02:11 ] INFO Sending email 
+[ 2015-11-06 11:02:11 ] INFO Done! 
+[ 2015-11-06 11:05:18 ] INFO Reading Credentials 
+[ 2015-11-06 11:05:18 ] INFO Establishing Kickboard session 
+[ 2015-11-06 11:05:18 ] INFO Authenticating to Kickboard 
+[ 2015-11-06 11:05:19 ] INFO Navigating to Culture page 
+[ 2015-11-06 11:05:19 ] INFO Getting culture csv 
+[ 2015-11-06 11:05:19 ] INFO Extrating csv from response to data frame 
+[ 2015-11-06 11:05:19 ] INFO Begin processing kb_df 
+[ 2015-11-06 11:05:19 ] INFO Getting today's date 
+[ 2015-11-06 11:05:19 ] INFO Identify merit points and paycheck deductions 
+[ 2015-11-06 11:05:19 ] INFO Removing deposits and subsetting to this week 
+[ 2015-11-06 11:05:19 ] INFO Renaming variables 
+[ 2015-11-06 11:05:19 ] INFO Numering events 
+[ 2015-11-06 11:05:19 ] INFO Calculating Paycheck totals 
+[ 2015-11-06 11:05:19 ] INFO Mergig paycheck totals with events 
+[ 2015-11-06 11:05:19 ] INFO Writing data to disk 
+[ 2015-11-06 11:05:19 ] INFO Sending email 
+[ 2015-11-06 11:05:19 ] INFO Done! 
+[ 2015-11-06 11:07:27 ] INFO Reading Credentials 
+[ 2015-11-06 11:07:27 ] INFO Establishing Kickboard session 
+[ 2015-11-06 11:07:28 ] INFO Authenticating to Kickboard 
+[ 2015-11-06 11:07:28 ] INFO Navigating to Culture page 
+[ 2015-11-06 11:07:28 ] INFO Getting culture csv 
+[ 2015-11-06 11:07:28 ] INFO Extrating csv from response to data frame 
+[ 2015-11-06 11:07:28 ] INFO Begin processing kb_df 
+[ 2015-11-06 11:07:28 ] INFO Getting today's date 
+[ 2015-11-06 11:07:28 ] INFO Identify merit points and paycheck deductions 
+[ 2015-11-06 11:07:28 ] INFO Removing deposits and subsetting to this week 
+[ 2015-11-06 11:07:28 ] INFO Renaming variables 
+[ 2015-11-06 11:07:28 ] INFO Numering events 
+[ 2015-11-06 11:07:28 ] INFO Calculating Paycheck totals 
+[ 2015-11-06 11:07:28 ] INFO Mergig paycheck totals with events 
+[ 2015-11-06 11:07:28 ] INFO Writing data to disk 
+[ 2015-11-06 11:07:29 ] INFO Sending email 
+[ 2015-11-06 11:07:29 ] INFO Done! 
+[ 2015-11-06 11:08:34 ] INFO Reading Credentials 
+[ 2015-11-06 11:08:34 ] INFO Establishing Kickboard session 
+[ 2015-11-06 11:08:34 ] INFO Authenticating to Kickboard 
+[ 2015-11-06 11:08:35 ] INFO Navigating to Culture page 
+[ 2015-11-06 11:08:35 ] INFO Getting culture csv 
+[ 2015-11-06 11:08:35 ] INFO Extrating csv from response to data frame 
+[ 2015-11-06 11:08:35 ] INFO Begin processing kb_df 
+[ 2015-11-06 11:08:35 ] INFO Getting today's date 
+[ 2015-11-06 11:08:35 ] INFO Identify merit points and paycheck deductions 
+[ 2015-11-06 11:08:35 ] INFO Removing deposits and subsetting to this week 
+[ 2015-11-06 11:08:35 ] INFO Renaming variables 
+[ 2015-11-06 11:08:35 ] INFO Numering events 
+[ 2015-11-06 11:08:35 ] INFO Calculating Paycheck totals 
+[ 2015-11-06 11:08:35 ] INFO Mergig paycheck totals with events 
+[ 2015-11-06 11:08:35 ] INFO Writing data to disk 
+[ 2015-11-06 11:08:35 ] INFO Sending email 
+[ 2015-11-06 11:08:36 ] INFO Done! 
+[ 2015-11-06 11:10:28 ] INFO Reading Credentials 
+[ 2015-11-06 11:10:28 ] INFO Establishing Kickboard session 
+[ 2015-11-06 11:10:29 ] INFO Authenticating to Kickboard 
+[ 2015-11-06 11:10:30 ] INFO Navigating to Culture page 
+[ 2015-11-06 11:10:30 ] INFO Getting culture csv 
+[ 2015-11-06 11:10:30 ] INFO Extrating csv from response to data frame 
+[ 2015-11-06 11:10:30 ] INFO Begin processing kb_df 
+[ 2015-11-06 11:10:30 ] INFO Getting today's date 
+[ 2015-11-06 11:10:30 ] INFO Identify merit points and paycheck deductions 
+[ 2015-11-06 11:10:30 ] INFO Removing deposits and subsetting to this week 
+[ 2015-11-06 11:10:30 ] INFO Renaming variables 
+[ 2015-11-06 11:10:30 ] INFO Numering events 
+[ 2015-11-06 11:10:30 ] INFO Calculating Paycheck totals 
+[ 2015-11-06 11:10:30 ] INFO Mergig paycheck totals with events 
+[ 2015-11-06 11:10:30 ] INFO Writing data to disk 
+[ 2015-11-06 11:10:30 ] INFO Sending email 
+[ 2015-11-06 11:10:30 ] INFO Done! 
+[ 2015-11-06 11:10:46 ] INFO Reading Credentials 
+[ 2015-11-06 11:10:46 ] INFO Establishing Kickboard session 
+[ 2015-11-06 11:10:47 ] INFO Authenticating to Kickboard 
+[ 2015-11-06 11:10:48 ] INFO Navigating to Culture page 
+[ 2015-11-06 11:10:48 ] INFO Getting culture csv 
+[ 2015-11-06 11:10:48 ] INFO Extrating csv from response to data frame 
+[ 2015-11-06 11:10:48 ] INFO Begin processing kb_df 
+[ 2015-11-06 11:10:48 ] INFO Getting today's date 
+[ 2015-11-06 11:10:48 ] INFO Identify merit points and paycheck deductions 
+[ 2015-11-06 11:10:48 ] INFO Removing deposits and subsetting to this week 
+[ 2015-11-06 11:10:48 ] INFO Renaming variables 
+[ 2015-11-06 11:10:48 ] INFO Numering events 
+[ 2015-11-06 11:10:48 ] INFO Calculating Paycheck totals 
+[ 2015-11-06 11:10:48 ] INFO Mergig paycheck totals with events 
+[ 2015-11-06 11:10:48 ] INFO Writing data to disk 
+[ 2015-11-06 11:10:48 ] INFO Sending email 
+[ 2015-11-06 11:10:49 ] INFO Done! 
+[ 2015-11-07 06:00:03 ] INFO Reading Credentials 
+[ 2015-11-07 06:00:03 ] INFO Establishing Kickboard session 
+[ 2015-11-07 06:00:03 ] INFO Authenticating to Kickboard 
+[ 2015-11-07 06:00:04 ] INFO Navigating to Culture page 
+[ 2015-11-07 06:00:04 ] INFO Getting culture csv 
+[ 2015-11-07 06:00:04 ] INFO Extrating csv from response to data frame 
+[ 2015-11-07 06:00:04 ] INFO Begin processing kb_df 
+[ 2015-11-07 06:00:04 ] INFO Getting today's date 
+[ 2015-11-07 06:00:04 ] INFO Identify merit points and paycheck deductions 
+[ 2015-11-07 06:00:04 ] INFO Removing deposits and subsetting to this week 
+[ 2015-11-07 06:00:04 ] INFO Renaming variables 
+[ 2015-11-07 06:00:04 ] INFO Numering events 
+[ 2015-11-07 06:00:04 ] INFO Calculating Paycheck totals 
+[ 2015-11-07 06:00:04 ] INFO Mergig paycheck totals with events 
+[ 2015-11-07 06:00:04 ] INFO Writing data to disk 
+[ 2015-11-07 06:00:04 ] INFO Sending email 
+[ 2015-11-07 06:00:04 ] INFO Done! 
+[ 2015-11-07 08:27:40 ] INFO Reading Credentials 
+[ 2015-11-07 08:27:40 ] INFO Establishing Kickboard session 
+[ 2015-11-07 08:27:40 ] INFO Authenticating to Kickboard 
+[ 2015-11-07 08:27:41 ] INFO Navigating to Culture page 
+[ 2015-11-07 08:27:41 ] INFO Getting culture csv 
+[ 2015-11-07 08:27:41 ] INFO Extrating csv from response to data frame 
+[ 2015-11-07 08:27:41 ] INFO Begin processing kb_df 
+[ 2015-11-07 08:27:41 ] INFO Getting today's date 
+[ 2015-11-07 08:27:41 ] INFO Identify merit points and paycheck deductions 
+[ 2015-11-07 08:27:41 ] INFO Removing deposits and subsetting to this week 
+[ 2015-11-07 08:27:41 ] INFO Renaming variables 
+[ 2015-11-07 08:27:41 ] INFO Numering events 
+[ 2015-11-07 08:27:41 ] INFO Calculating Paycheck totals 
+[ 2015-11-07 08:27:41 ] INFO Mergig paycheck totals with events 
+[ 2015-11-07 08:27:41 ] INFO Writing data to disk 
+[ 2015-11-07 08:27:41 ] INFO Sending email 
+[ 2015-11-07 08:27:41 ] INFO Done! 
+[ 2015-11-07 08:40:41 ] INFO Reading Credentials 
+[ 2015-11-07 08:40:41 ] INFO Establishing Kickboard session 
+[ 2015-11-07 08:40:41 ] INFO Authenticating to Kickboard 
+[ 2015-11-07 08:40:42 ] INFO Navigating to Culture page 
+[ 2015-11-07 08:40:42 ] INFO Getting culture csv 
+[ 2015-11-07 08:40:42 ] INFO Extrating csv from response to data frame 
+[ 2015-11-07 08:40:42 ] INFO Begin processing kb_df 
+[ 2015-11-07 08:40:42 ] INFO Getting today's date 
+[ 2015-11-07 08:40:42 ] INFO Identify merit points and paycheck deductions 
+[ 2015-11-07 08:40:42 ] INFO Removing deposits and subsetting to this week 
+[ 2015-11-07 08:40:42 ] INFO Renaming variables 
+[ 2015-11-07 08:40:42 ] INFO Numering events 
+[ 2015-11-07 08:40:42 ] INFO Calculating Paycheck totals 
+[ 2015-11-07 08:40:42 ] INFO Mergig paycheck totals with events 
+[ 2015-11-07 08:40:42 ] INFO Writing data to disk 
+[ 2015-11-07 08:40:42 ] INFO Sending email 
+[ 2015-11-07 08:40:42 ] INFO Done! 
+[ 2015-11-07 08:42:06 ] INFO Reading Credentials 
+[ 2015-11-07 08:42:19 ] INFO Establishing Kickboard session 
+[ 2015-11-07 08:42:27 ] INFO Authenticating to Kickboard 
+[ 2015-11-07 08:43:26 ] INFO Navigating to Culture page 
+[ 2015-11-07 08:43:58 ] INFO Getting culture csv 
+[ 2015-11-07 08:45:24 ] INFO Begin processing kb_df 
+[ 2015-11-07 08:45:25 ] INFO Getting today's date 
+[ 2015-11-07 08:45:35 ] INFO Reading Credentials 
+[ 2015-11-07 08:45:35 ] INFO Establishing Kickboard session 
+[ 2015-11-07 08:45:35 ] INFO Authenticating to Kickboard 
+[ 2015-11-07 08:45:36 ] INFO Navigating to Culture page 
+[ 2015-11-07 08:45:36 ] INFO Getting culture csv 
+[ 2015-11-07 08:45:51 ] INFO Extrating csv from response to data frame 
+[ 2015-11-07 08:45:51 ] INFO Begin processing kb_df 
+[ 2015-11-07 08:45:51 ] INFO Getting today's date 
+[ 2015-11-07 08:45:51 ] INFO Identify merit points and paycheck deductions 
+[ 2015-11-07 08:45:51 ] INFO Removing deposits and subsetting to this week 
+[ 2015-11-07 08:45:51 ] INFO Renaming variables 
+[ 2015-11-07 08:45:51 ] INFO Numering events 
+[ 2015-11-07 08:45:52 ] INFO Calculating Paycheck totals 
+[ 2015-11-07 08:45:52 ] INFO Mergig paycheck totals with events 
+[ 2015-11-07 08:45:52 ] INFO Writing data to disk 
+[ 2015-11-07 08:45:52 ] INFO Sending email 
+[ 2015-11-07 08:45:54 ] INFO Email for chaid@kippchicago.org queued 
+[ 2015-11-07 08:45:54 ] INFO Done! 
