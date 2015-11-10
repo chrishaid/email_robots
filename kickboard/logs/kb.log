@@ -217,3 +217,11 @@
 [ 2015-11-07 08:45:52 ] INFO Sending email 
 [ 2015-11-07 08:45:54 ] INFO Email for chaid@kippchicago.org queued 
 [ 2015-11-07 08:45:54 ] INFO Done! 
+[ 2015-11-07 15:47:31 ] INFO Begin processing kb_df 
+[ 2015-11-07 15:47:31 ] INFO Getting today's date 
+[ 2015-11-07 15:47:34 ] INFO Identify merit points and paycheck deductions 
+[ 2015-11-07 15:47:41 ] INFO Removing deposits and subsetting to this week 
+[ 2015-11-07 15:47:50 ] INFO Renaming variables 
+[ 2015-11-07 15:47:53 ] INFO Numering events 
+[ 2015-11-07 15:48:03 ] INFO Calculating Paycheck totals 
+[ 2015-11-07 15:48:03 ] INFO Mergig paycheck totals with events 

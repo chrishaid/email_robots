@@ -99,20 +99,21 @@ kb_df <- kb_df %>%
 
 info(logger, "Removing deposits and subsetting to this week")
 kb_long <- kb_df %>%
-  filter(Behavior != "Deposit",
-         Behavior_Date %within% week_filter) %>%
-  #mutate(Dollar_Value = as.factor(Dollar_Value)) %>%
-  select(Student, 
-         Group, 
-         CreatePoint, 
-         Behavior, 
-         Dollar_Value, 
-         Behavior_Date, 
-         Staff, 
-         Comments) %>%
-  gather(variable, value, 
-         Behavior, Dollar_Value, Behavior_Date, Staff, Comments,
-         na.rm = TRUE)
+filter(Behavior != "Deposit",
+       Behavior_Date %within% week_filter) %>%
+mutate(Dollar_Value = as.factor(Dollar_Value),
+       Behavior_Date = as.character(Behavior_Date)) %>%
+select(Student, 
+       Group, 
+       CreatePoint, 
+       Behavior, 
+       Dollar_Value, 
+       Behavior_Date, 
+       Staff, 
+       Comments) %>%
+gather(variable, value, 
+       Behavior, Dollar_Value, Behavior_Date, Staff, Comments,
+       na.rm = TRUE)
 
 info(logger, "Renaming variables")
 levels(kb_long$variable) <- c("Behavior", "Dollar", "Date", "Staff", "Comments")
@@ -121,7 +122,7 @@ levels(kb_long$variable) <- c("Behavior", "Dollar", "Date", "Staff", "Comments")
 info(logger, "Numering events")
 kb_long_2 <- kb_long %>%
   group_by(Student, CreatePoint, variable) %>%
-  mutate(OrderID = row_number(value),
+  mutate(OrderID = row_number(Student), # use Student so rows stay in same order
          variable2 = paste(OrderID, variable, OrderID, sep = " ")) %>%
   arrange(Group, Student, CreatePoint)
 
